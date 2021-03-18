@@ -70,6 +70,34 @@ class UI {
         document.querySelector('#number').value = '';
     }
 }
+
+//class to handle storage of info
+//methods are static to call on them directly without having to instantiate store class
+//key value pairs, string version of entire array of contacts, because we cannot store objects in local storage, we have to stringify it first and then parse it 
+class Store {
+    static getContacts() {
+        let contacts;
+        if(localStorage.getItem('contact') === null) {
+            contacts = [];
+        } else {
+            contacts = JSON.parse(localStorage.getItem('contacts'));
+        }
+         return contacts;
+    }
+
+    static addContact(contact) {
+        const contacts = Store.getContacts();
+        contacts.push(contact);
+        localStorage.setItem('contacts', JSON.stringify(contacts));
+
+    }
+
+    static removeContact(name) {
+        
+
+    }
+
+}
      //event: display contacts
 document.addEventListener('DOMContentLoaded', UI.displayNewContacts);
 
