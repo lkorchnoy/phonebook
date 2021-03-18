@@ -1,4 +1,4 @@
-class NewContact {
+class Contact {
     constructor(name, phonenumber) {
         this.name = name;
         this.phonenumber = phonenumber;
@@ -48,4 +48,20 @@ class UI {
         list.appendChild(row);
     }
 }
-     
+     //event: display contacts
+document.addEventListener('DOMContentLoaded', UI.displayNewContacts);
+
+//form values
+
+document.querySelector('#book-form').addEventListener('submit', (e) => {
+//prevent actual submit
+    e.preventDefault();
+
+    const name = document.querySelector('#name').value;
+    const number = document.querySelector('#number').value;
+
+    //instantiating contact
+    const contact = new Contact(name, number);
+
+    console.log(contact)
+});
