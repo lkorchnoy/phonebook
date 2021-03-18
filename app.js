@@ -94,6 +94,9 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     //add contact to ui
     UI.addContactToList(contact);
 
+    //success message
+    UI.showAlert('Contact Added', 'success');
+
     UI.clearFields();
  
     }
@@ -103,4 +106,5 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 document.querySelector('#name-list').addEventListener('click', (e) => {
 
     UI.deleteContact(e.target)
+    UI.showAlert('Contact Removed', 'warning');
 });
