@@ -47,6 +47,11 @@ class UI {
 
         list.appendChild(row);
     }
+
+    static clearFields() {
+        document.querySelector('#name').value = '';
+        document.querySelector('#number').value = '';
+    }
 }
      //event: display contacts
 document.addEventListener('DOMContentLoaded', UI.displayNewContacts);
@@ -63,5 +68,10 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     //instantiating contact
     const contact = new Contact(name, number);
 
-    console.log(contact)
+    //console.log(contact)
+    //add contact to ui
+    UI.addContactToList(contact);
+
+    UI.clearFields();
+    
 });
