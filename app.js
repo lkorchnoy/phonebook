@@ -54,6 +54,10 @@ class UI {
        }
     }
 
+    static showAlert(message, className) {
+        
+    }
+
     static clearFields() {
         document.querySelector('#name').value = '';
         document.querySelector('#number').value = '';
@@ -71,7 +75,12 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     const name = document.querySelector('#name').value;
     const number = document.querySelector('#number').value;
 
-    //instantiating contact
+    //validating
+
+    if(name === '' || number === '') {
+        alert('Please fill in the information');
+    } else {
+        //instantiating contact
     const contact = new Contact(name, number);
 
     //console.log(contact)
@@ -79,9 +88,11 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     UI.addContactToList(contact);
 
     UI.clearFields();
+ 
+    }
 
 });
-
+//remove a contact 
 document.querySelector('#name-list').addEventListener('click', (e) => {
 
     UI.deleteContact(e.target)
