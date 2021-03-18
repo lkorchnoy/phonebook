@@ -48,6 +48,12 @@ class UI {
         list.appendChild(row);
     }
 
+    static deleteContact(target) {
+       if(target.classList.contains('delete')) {
+           target.parentElement.parentElement.remove();
+       }
+    }
+
     static clearFields() {
         document.querySelector('#name').value = '';
         document.querySelector('#number').value = '';
@@ -73,5 +79,10 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     UI.addContactToList(contact);
 
     UI.clearFields();
-    
+
+});
+
+document.querySelector('#name-list').addEventListener('click', (e) => {
+
+    UI.deleteContact(e.target)
 });
