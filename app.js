@@ -55,7 +55,12 @@ class UI {
     }
 
     static showAlert(message, className) {
-        
+        const div = document.createElement('div');
+        div.className = `alert alert-${className}`;
+        div.appendChild(document.createTextNode(message));
+        const container = document.querySelector('.container');
+        const form = document.querySelector('#book-form');
+        container.insertBefore(div, form);
     }
 
     static clearFields() {
@@ -78,7 +83,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     //validating
 
     if(name === '' || number === '') {
-        alert('Please fill in the information');
+        UI.showAlert('Please fill in the information', 'danger');
     } else {
         //instantiating contact
     const contact = new Contact(name, number);
