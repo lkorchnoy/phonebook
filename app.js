@@ -36,5 +36,16 @@ class UI {
     }
     static addContactToList(contact) {
         const list = document.querySelector('#name-list');
+
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+        <td>${contact.name}</td>
+        <td>${contact.phonenumber}</td>
+        <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+        `;
+
+        list.appendChild(row);
     }
 }
+     
