@@ -8,31 +8,7 @@ class Contact {
 class UI {
     static displayNewContacts() {
         const contacts = Store.getContacts();
-        /* const StoreContacts = [
-            {
-                name: 'Isabella',
-                phonenumber: '1234567891'
-            },
-            {
-                name: 'Samuel',
-                phonenumber: '1234567892'
-            },
-            {
-                name: 'Nikita',
-                phonenumber: '1234567893'
-            },
-            {
-                name: 'Alexandra',
-                phonenumber: '1234567894'
-            },
-            {
-                name: 'Anastasia',
-                phonenumber: '1234567895'
-            }
-        ]; */
-
-        /* const contacts = StoreContacts;
- */
+        
         contacts.forEach((contact) => UI.addContactToList(contact));
     }
     static addContactToList(contact) {
@@ -49,6 +25,7 @@ class UI {
         list.appendChild(row);
     }
 
+    
     static deleteContact(target) {
        if(target.classList.contains('delete')) {
            target.parentElement.parentElement.remove();
@@ -78,10 +55,10 @@ class UI {
 class Store {
     static getContacts() {
         let contacts;
-        if(localStorage.getItem('contact') === null) {
+        if(window.localStorage.getItem('contact') === null) {
             contacts = [];
         } else {
-            contacts = JSON.parse(localStorage.getItem('contacts'));
+            contacts = JSON.parse(window.localStorage.getItem('contacts'));
         }
          return contacts;
     }
@@ -89,7 +66,7 @@ class Store {
     static addContact(contact) {
         const contacts = Store.getContacts();
         contacts.push(contact);
-        localStorage.setItem('contacts', JSON.stringify(contacts));
+        window.localStorage.setItem('contacts', JSON.stringify(contacts));
 
     }
 
@@ -102,7 +79,7 @@ class Store {
             }
         });
 
-        localStorage.setItem('contacts', JSON.stringify(contacts));
+        window.localStorage.setItem('contacts', JSON.stringify(contacts));
     }
 }
      //event: display contacts
